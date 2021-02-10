@@ -8,16 +8,17 @@ const questionOne = function questionOne(arr) {
             if (num === 1){
                 object[num] = "false";
             } else {
-                for (let j = 2; j <= parseInt(Math.sqrt(num)); j++){
+                var prime = true;
+                for (let j = 2; j <= (Math.sqrt(num)); j++){
                     if (num % j === 0){
-                        var prime = false;
+                        prime = false;
+                        break;
                     }
-                    prime = true;
                 }
                 if (prime){
-                    object[num] = "true";
-                } else {
                     object[num] = "false";
+                } else {
+                    object[num] = "true";
                 }
             }
         }
@@ -41,38 +42,53 @@ const questionTwo = function questionTwo(arr) {
 
 const questionThree = function questionThree(text) {
     let object = {consonants: 0, vowels: 0, numbers: 0, spaces: 0, punctuation: 0, specialCharacters: 0};
+
+    let consonants = "bBcCdDfFgGhHjJkKlLmMnNpPqQrRsStTvVwWxXyYzZ";
+    let vowels = "aeiouAEIOU";
+    let numbers = "0123456789";
+    let punctuation = ".,?!\"'-:;()[].../";
+    let specialCharacters = "#$%&*+-<=>@^_`{|}~\\";
+
     if (text !== undefined || text.length !== 0){
         for (var i = 0; i < text.length; i++){
-            if (text.charCodeAt(i) == 32){
+            for (let j = 0; j <= 41; j++){
+                if(text[i] == object.consonants[j])
+                object.consonants += 1
+            }
+            for (let j = 0; j <= 9; j++){
+                if(text[i] == object.vowels[j])
+                object.vowels += 1
+            }
+            for (let j = 0; j <= 9; j++){
+                if(text[i] == object.numbers[j])
+                object.numbers += 1
+            }
+            if (text[i] === " "){
                 object.spaces += 1;
             }
-            if ((text.charCodeAt(i) >= 35 && text.charCodeAt(i) <= 38) || text.charCodeAt(i) == 42 || text.charCodeAt(i) == 43 || text.charCodeAt(i) == 60 || text.charCodeAt(i) == 61 || text.charCodeAt(i) == 62 || text.charCodeAt(i) == 64 || text.charCodeAt(i) == 92 || text.charCodeAt(i) == 94 || text.charCodeAt(i) == 95 || text.charCodeAt(i) == 126 || text.charCodeAt(i) == 173 || text.charCodeAt(i) == 174 || text.charCodeAt(i) == 175){
-                object.specialCharacters += 1;
+            for (let j = 0; j <= 17; j++){
+                if(text[i] == object.punctuation[j])
+                object.punctuation += 1
             }
-            if (text.charCodeAt(i) >= 48 && text.charCodeAt(i) <= 57){
-                object.numbers += 1;
-            }
-            if (text.charCodeAt(i) == 33 || text.charCodeAt(i) == 34 || (text.charCodeAt(i) >= 39 && text.charCodeAt(i) <= 41) || text.charCodeAt(i) == 44 || text.charCodeAt(i) == 45 || text.charCodeAt(i) == 46 || text.charCodeAt(i) == 47 || text.charCodeAt(i) == 58 || text.charCodeAt(i) == 59 || text.charCodeAt(i) == 63 || text.charCodeAt(i) == 91 || text.charCodeAt(i) == 93  || text.charCodeAt(i) == 96){
-                object.punctuation += 1;
-            }
-            if ((text.charCodeAt(i) >= 65 && text.charCodeAt(i) <= 90) || (text.charCodeAt(i) >= 97 && text.charCodeAt(i) <= 122)){
-                if (text.charCodeAt(i) == 65 || text.charCodeAt(i) == 69 || text.charCodeAt(i) == 73 || text.charCodeAt(i) == 79 || text.charCodeAt(i) == 85 || text.charCodeAt(i) == 97 || text.charCodeAt(i) == 101 || text.charCodeAt(i) == 105 || text.charCodeAt(i) == 111 || text.charCodeAt(i) == 117){
-                    object.vowels += 1;
-                } else {
-                    object.consonants += 1;
+            for (let j = 0; j <= 19; j++){
+                if(text[i] == object.punctuation[j])
+                object.punctuation += 1
                 }
             }
         }
     }
     return object;
-}
 
 const questionFour = function questionFour(num1, num2,num3) {
-    if (num2 == 0){
-        return (num1/(num3*12)).toFixed(2);
-    } else {
-        return ((num1 * ((num2 * .01)/ 12)) / (1 - Math.pow(1 + (num2*.01)/12, -(num3*12)))).toFixed(2);
-    }
+    if (num1 < 0 || num2 < 0 || num3 < 0 || num1 === undefined || num2 === undefined || num3 === undefined)
+    console.log(" ")
+    let mIN = num2 / 100 / 12;
+    let rate = Math.pow((1+mRp), num3 * 12)
+	if (num2 === 0) {
+        return mRp = (num1/(num3 * 12)).toFixed(2);
+	} else {
+		return mRp = (num1 * mIN * rate)/(rate - 1);
+	}
 }
 
 module.exports = {
