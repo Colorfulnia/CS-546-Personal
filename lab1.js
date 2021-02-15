@@ -16,9 +16,9 @@ const questionOne = function questionOne(arr) {
                     }
                 }
                 if (prime){
-                    object[num] = "false";
-                } else {
                     object[num] = "true";
+                } else {
+                    object[num] = "false";
                 }
             }
         }
@@ -46,50 +46,51 @@ const questionThree = function questionThree(text) {
     let consonants = "bBcCdDfFgGhHjJkKlLmMnNpPqQrRsStTvVwWxXyYzZ";
     let vowels = "aeiouAEIOU";
     let numbers = "0123456789";
-    let punctuation = ".,?!\"'-:;()[].../";
+    let punctuation = ".,?!\"'-:;()[]/";
     let specialCharacters = "#$%&*+-<=>@^_`{|}~\\";
 
     if (text !== undefined || text.length !== 0){
         for (var i = 0; i < text.length; i++){
             for (let j = 0; j <= 41; j++){
-                if(text[i] == object.consonants[j])
-                object.consonants += 1
+                if(text[i] == consonants[j]){
+                object.consonants += 1}
             }
             for (let j = 0; j <= 9; j++){
-                if(text[i] == object.vowels[j])
-                object.vowels += 1
+                if(text[i] == vowels[j]){
+                object.vowels += 1}
             }
             for (let j = 0; j <= 9; j++){
-                if(text[i] == object.numbers[j])
-                object.numbers += 1
+                if(text[i] == numbers[j]){
+                object.numbers += 1}
             }
             if (text[i] === " "){
                 object.spaces += 1;
             }
             for (let j = 0; j <= 17; j++){
-                if(text[i] == object.punctuation[j])
-                object.punctuation += 1
+                if(text[i] == punctuation[j]){
+                object.punctuation += 1}
             }
             for (let j = 0; j <= 19; j++){
-                if(text[i] == object.punctuation[j])
-                object.punctuation += 1
+                if(text[i] == specialCharacters[j]){
+                object.specialCharacters += 1}
                 }
             }
         }
-    }
     return object;
+}
 
 const questionFour = function questionFour(num1, num2,num3) {
     if (num1 < 0 || num2 < 0 || num3 < 0 || num1 === undefined || num2 === undefined || num3 === undefined)
     console.log(" ")
     let mIN = num2 / 100 / 12;
-    let rate = Math.pow((1+mRp), num3 * 12)
+    let rate = Math.pow((1+mIN), num3 * 12)
 	if (num2 === 0) {
         return mRp = (num1/(num3 * 12)).toFixed(2);
 	} else {
-		return mRp = (num1 * mIN * rate)/(rate - 1);
+		return mRp = ((num1 * mIN * rate)/(rate - 1)).toFixed(2);
 	}
 }
+
 
 module.exports = {
     firstName: "Yueyang", 
